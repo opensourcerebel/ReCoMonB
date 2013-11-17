@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project ReCoMonB with libraries in sub-folder">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+        <jar destfile="${src}/../export/ReCoMonB.jar">
+            <manifest>
+                <attribute name="Main-Class" value="recomonb.ReCoMonBMainFrame"/>
+                <attribute name="Class-Path" value=". ReCoMonB_lib/hidapi-1.1.jar ReCoMonB_lib/junit.jar ReCoMonB_lib/org.hamcrest.core_1.3.0.v201303031735.jar ReCoMonB_lib/log4j.jar ReCoMonB_lib/sigar.jar"/>
+            </manifest>
+            <fileset dir="${src}/../bin"/>
+        </jar>
+        <delete dir="${src}/../export/ReCoMonB_lib"/>
+        <mkdir dir="${src}/../export/ReCoMonB_lib"/>
+        <copy file="${src}/../lib/hidapi-1.1.jar" todir="${src}/../export/ReCoMonB_lib"/>
+        <copy file="${src}/../lib/hyperic-sigar-1.6.4/bin/log4j.jar" todir="${src}/../export/ReCoMonB_lib"/>
+        <copy file="${src}/../lib/hyperic-sigar-1.6.4/bin/sigar.jar" todir="${src}/../export/ReCoMonB_lib"/>
+    	<copy file="${src}/../lib/hyperic-sigar-1.6.4/bin/sigar.jar" todir="${src}/../export/ReCoMonB_lib"/>
+        <copy todir="${src}/../export/ReCoMonB_lib">
+             <fileset dir="${src}/../lib/CigarNative"/>        	
+        </copy>
+    	<copy todir="${src}/../export/">
+    	     <fileset dir="${src}/../src/scripts"/>        	
+    	</copy>
+    </target>
+</project>

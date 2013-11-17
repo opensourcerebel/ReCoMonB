@@ -1,0 +1,39 @@
+Real Computer Monitoring Block 
+http://www.ivancreations.com/2013/07/real-computer-monitoring-block-detailed.html
+
+In order to make the thing work one needs to:
+* Following hardware
+  [required] Mini USB cable
+  [required] https://www.olimex.com/Products/Duino/PIC32/PIC32-T795/open-source-hardware - to connect to the PC and receive data via USB from the PC
+  [required] https://www.olimex.com/Products/Modules/LED/MOD-LED8x8RGB/open-source-hardware - to receive data via SPI from the T795 
+  [required] https://www.olimex.com/Products/PIC/Programmers/PIC-KIT3/ - to program the T795 board
+  [required] Breadboard with 830 holes. The power lines shall NOT NOT NOT NOT be running along the entire board, but be separated in two halfs.
+  [required] 40 male to male dupoint wires
+  [required] solder, flux and of course: Soldering iron.
+  [optional] https://www.olimex.com/Products/Modules/Interface/MOD-USB-RS232/open-source-hardware - to have an output console from the T795 to the PC (very usefull for debugging)
+  
+* The software from this repo
+
+How to cook:
+Put T795 board on the beginning of the bread board. NOTE THE POLARITY of the power lines!
+Start your soldering iron 
+Take a look at the /docs/connections.png and solder a wire on the same point the CURLY ORANGE wire is soldered
+Activate supply rail 5V : Put the other end at the SECOND half of the bread board - that is to supply 5V for the RBG matrix (it will work on 3V3 from the main rail of the T795 board but the leds will be dimmer)
+Activate GROUND rail 5V : Connect the ground rail of the T795 board to the SECOND half of the bread board (the blue line next to the orange one)
+Connect LATCH on RGB to PIN 41 on T795 
+Connect DATA on RGB to PIN 40 on T795 
+Connect SCK on RGB to PIN 38 on T795 
+Connect VCC of RGB to supply rail 5V (that you activated earlier)
+Connect GND of RGB to GROUND rail 5V (that you activated earlier) 
+Connect GND of RGB to GROUND rail 5V 
+
+Connect T795 board to the PC using the MiniUSB cable
+Use the PIC-KIT3 programmer and MPLABX IDE to burn the HEX file located in /uc/firmware to the T795 board
+Wait for the T795 green and yellow leds to start blinking
+
+Open eclipse and import the eclipse project from /pc folder 
+Run the ReCoMonBMainFrame class
+
+If you wish to have the PC software run standalone then run the ExportJar.xml ant script and then take the contents of the export directory.
+Use the appropriate script to start the ReCoMonB PC software depending on yout OS
+

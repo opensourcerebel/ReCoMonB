@@ -1,0 +1,5 @@
+/pc/bin/**
+/pc/export/**
+!StartMeLin.sh
+!StartMeWin.bat
+/pc/export/ReCoMonB_lib/ReCoMonB.jar
